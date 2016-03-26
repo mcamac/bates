@@ -16,10 +16,12 @@ app.use(express.static(path.join(process.cwd(), 'dist')))
 app.get('*', function readFile(req, res) {
   res.sendFile(path.join(process.cwd(), 'dist/200.html'))
 })
-app.listen(3000, 'localhost', function startServer(err) {
+const PORT = process.env.PORT || 3000
+const HOST = process.env.HOST || '0.0.0.0'
+app.listen(POST, HOST, function startServer(err) {
   if (err) {
     console.log(err)
     return
   }
-  console.log('Listening at http://localhost:3000')
+  console.log(`Listening at http://${HOST}:${PORT}`)
 })
