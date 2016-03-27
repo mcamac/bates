@@ -1,4 +1,6 @@
-
+var autoprefixer = require('autoprefixer')
+var precss = require('precss')
+var nested = require('postcss-nested')
 var path = require('path')
 var webpack = require('webpack')
 
@@ -28,8 +30,11 @@ module.exports = {
       }
     }, {
       test: /\.css$/,
-      loaders: ['style', 'css'],
+      loaders: ['style', 'css', 'postcss'],
       include: path.join(process.cwd(), 'src')
     }]
+  },
+  postcss: () => {
+    return [autoprefixer, precss, nested]
   }
 }
