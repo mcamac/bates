@@ -1,4 +1,6 @@
-
+var autoprefixer = require('autoprefixer')
+var precss = require('precss')
+var nested = require('postcss-nested')
 var path = require('path')
 var webpack = require('webpack')
 
@@ -35,6 +37,13 @@ module.exports = {
       query: {
         extends: path.join(__dirname, '../../.babelrc'),
       },
-    }],
+    }, {
+      test: /\.css$/,
+      loaders: ['style', 'css', 'postcss'],
+      include: path.join(process.cwd(), 'src')
+    }]
   },
+  postcss: () => {
+    return [autoprefixer, precss, nested]
+  }
 }
