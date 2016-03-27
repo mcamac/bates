@@ -38,6 +38,10 @@ module.exports = {
       query: {
         extends: path.join(__dirname, '../../.babelrc'),
       }
+    }, {
+      test: /\.css$/,
+      loader: ['style', 'css'],
+      include: path.join(process.cwd(), 'src')
     }],
   },
 }

@@ -26,6 +26,10 @@ module.exports = {
         extends: path.join(__dirname, '../../.babelrc'),
         cacheDirectory: true,
       }
+    }, {
+      test: /\.css$/,
+      loader: ['style', 'css'],
+      include: path.join(process.cwd(), 'src')
     }]
   }
 }
